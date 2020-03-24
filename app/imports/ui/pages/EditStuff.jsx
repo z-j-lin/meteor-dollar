@@ -13,8 +13,8 @@ class EditStuff extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { name, quantity, condition, _id } = data;
-    Stuffs.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
+    const { name, quantity, value, condition, _id } = data;
+    Stuffs.update(_id, { $set: { name, quantity, value, condition } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -34,6 +34,7 @@ class EditStuff extends React.Component {
               <Segment>
                 <TextField name='name'/>
                 <NumField name='quantity' decimal={false}/>
+                <NumField name='value' decimal={false}/>
                 <SelectField name='condition'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
